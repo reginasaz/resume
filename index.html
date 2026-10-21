@@ -110,8 +110,31 @@
         font-size: 0.9rem;
         font-weight: 500;
     }
-    .company-meta strong {
-        color: #38bdf8; /* Голубое название компании */
+    .company-meta a {
+        color: #38bdf8 !important; /* Название компании изначально голубое */
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.2s ease;
+    }
+    .company-meta a:hover {
+        color: #ffffff !important; /* При наведении становится белым */
+        text-decoration: underline; /* Появляется аккуратное подчеркивание */
+    }
+    
+    /* Для светлой темы сайта */
+    body.light-theme .company-meta a {
+        color: #0284c7 !important;
+    }
+    body.light-theme .company-meta a:hover {
+        color: #0f172a !important;
+    }
+
+    /* Для печатной версии А4 (убираем интерактив, делаем строгим) */
+    @media print {
+        .company-meta a {
+            color: #0f172a !important;
+            text-decoration: none !important;
+        }
     }
     
     ul {
@@ -506,7 +529,7 @@
                 <article>
                     <h3>DWH Analyst / Analytics Engineer</h3>
                     <p class="company-meta">
-                        <strong>Bask Digital</strong> &middot; Сентябрь 2023 — Октябрь 2026
+                        <strong><a href="https://bask.ws" target="_blank">Bask Digital</a></strong> &middot; Сентябрь 2023 — Октябрь 2026
                     </p>
                     <ul>
                         <li><strong>В роли единственного инженера на проекте перенесла аналитическую инфраструктуру</strong> с BigQuery + Looker Studio на отечественный стек Yandex Cloud (ClickHouse + DataLens + Apache Airflow).</li>
@@ -522,7 +545,7 @@
                 <article>
                     <h3>Marketing Data Analyst (Data Automation)</h3>
                     <p class="company-meta">
-                        <strong>Simtu</strong> &middot; Октябрь 2022 — Август 2023
+                        <strong><a href="https://simtu.ru" target="_blank">Simtu</a></strong> &middot; Октябрь 2022 — Август 2023
                     </p>
                     <ul>
                         <li><strong>Спроектировала и внедрила логику сбора данных</strong> для системы сквозной аналитики на базе связки Roistat + amoCRM, включая глубокую интеграцию коллтрекинга.</li>
