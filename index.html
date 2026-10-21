@@ -1,0 +1,639 @@
+<style>
+    body {
+        background-color: #0f172a !important; /* Глубокий темно-серый/синий фон */
+        color: #94a3b8 !important; /* Комфортный для глаз светлый текст */
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px 40px 20px;
+    }
+    
+    /* ТЕМНАЯ ШАПКА */
+    .hero-header {
+        background: #1e1e2f !important; /* Чуть более глубокий оттенок для шапки */
+        color: #ffffff !important;
+        padding: 40px 40px 35px 40px !important;
+        border-radius: 0 0 16px 16px;
+        margin: 0 -20px 30px -20px;
+    }
+    .hero-header h1 {
+        color: #ffffff !important;
+        margin: 0 0 5px 0 !important;
+        font-size: 2.6rem;
+        letter-spacing: -0.5px;
+        font-weight: 800;
+    }
+    .hero-header .role-title {
+        font-size: 1.4rem;
+        color: #38bdf8 !important; /* Яркий голубой акцент */
+        margin: 0 0 15px 0;
+        font-weight: 600;
+    }
+    .hero-header .summary-text {
+        color: #94a3b8 !important;
+        max-width: 900px;
+        margin: 0 0 30px 0;
+        font-size: 1.05rem;
+    }
+    
+    /* КОНТАКТНАЯ ПАНЕЛЬ */
+    .contact-bar {
+        border-top: 1px solid #334155;
+        padding-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 35px;
+    }
+    .contact-bar span {
+        color: #cbd5e1;
+        font-size: 0.95rem;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .contact-bar svg {
+        fill: #38bdf8;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .contact-bar a {
+        color: #38bdf8;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+    .contact-bar a:hover {
+        color: #ffffff !important;
+        text-decoration: underline;
+    }
+    
+    /* СЕТКА ДЛЯ ПК */
+    .resume-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 60px;
+        margin-top: 15px;
+    }
+    
+    h2 {
+        color: #ffffff !important; /* Белые контрастные заголовки секций */
+        border-bottom: 1px solid #334155; /* Темная разделительная линия */
+        padding-bottom: 8px;
+        margin-top: 0;
+        margin-bottom: 25px;
+        font-size: 1.15rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 700;
+    }
+    article {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 0 25px 0 !important;
+        background: transparent !important;
+        margin-bottom: 25px !important;
+        border-bottom: 1px dashed #334155 !important;
+    }
+    article:last-of-type {
+        border-bottom: none !important;
+        padding-bottom: 0 !important;
+    }
+    article h3 {
+        color: #ffffff !important; /* Белые заголовки должностей */
+        margin-bottom: 2px;
+        font-size: 1.3rem;
+    }
+    .company-meta {
+        margin: 0 0 12px 0;
+        color: #64748b;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+    .company-meta strong {
+        color: #38bdf8; /* Голубое название компании */
+    }
+    
+    ul {
+        padding-left: 0;
+        list-style: none;
+        margin-top: 5px;
+    }
+    ul li {
+        color: #94a3b8;
+        margin-bottom: 8px;
+        position: relative;
+        padding-left: 22px;
+    }
+    ul li strong {
+        color: #ffffff; /* Выделение важных достижений белым */
+    }
+    ul li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: #38bdf8; /* Голубые дефисы списков */
+        font-weight: bold;
+        margin-right: 8px;
+    }
+    
+    .skill-group-wrapper {
+        margin-bottom: 25px;
+    }
+    .skill-group-wrapper h4 {
+        margin: 0 0 8px 0;
+        font-size: 0.85rem;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    /* СТИЛЬНЫЕ ТЕМНЫЕ ТЕГИ С НЕОНОВЫМ ЭФФЕКТОМ */
+    .badge {
+        background: #1e293b !important;
+        color: #38bdf8 !important;
+        padding: 6px 14px;
+        border-radius: 8px;
+        display: inline-block;
+        font-size: 0.85rem;
+        margin: 4px 4px 4px 0;
+        font-weight: 600;
+        border: 1px solid #334155;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer; 
+    }
+    .badge:hover {
+        background: #38bdf8 !important;
+        color: #0f172a !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+    }
+    
+    /* КАРТОЧКИ СЕРТИФИКАТОВ НА ТЕМНОМ ФОНЕ */
+    .cert-card {
+        background: #1e293b;
+        border: 1px solid #334155;
+        padding: 16px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .cert-card:hover {
+        border-color: #475569;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    /* Интерактивный ховер для текста внутри карточки */
+    .cert-card:hover .cert-info h4 {
+        color: #38bdf8 !important;
+    }
+    .cert-icon-wrapper {
+        background: #0f172a;
+        border: 1px solid #334155;
+        border-radius: 8px;
+        min-width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .cert-info h4 {
+        color: #ffffff !important;
+        margin: 0 0 2px 0;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: color 0.2s ease;
+    }
+    .cert-info p {
+        margin: 0;
+        font-size: 0.8rem;
+        color: #64748b;
+        font-weight: 500;
+    }
+    
+    /* АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ */
+    @media (max-width: 768px) {
+        body { padding: 0 10px 20px 10px; }
+        .hero-header { padding: 30px 20px 25px 20px !important; border-radius: 0; margin: 0 -10px 20px -10px; }
+        .hero-header h1 { font-size: 2rem; }
+        .contact-bar { flex-direction: column; gap: 12px; }
+        
+        .resume-container { display: flex; flex-direction: column; gap: 30px; }
+        .left-column { order: 2; } 
+        .right-column { order: 1; } 
+    }
+
+    /* ПЕЧАТЬ ОСТАЕТСЯ СВЕТЛОЙ (ДЛЯ ЭКОНОМИИ КРАСКИ HR) */
+    @media print {
+        body {
+            background: #fff !important;
+            color: #1e293b !important;
+            font-size: 10pt !important;
+            line-height: 1.4 !important;
+            padding: 0 !important;
+        }
+        .hero-header { background: #1e1e2f !important; color: #ffffff !important; }
+        h2 { color: #0f172a !important; border-bottom: 1px solid #e2e8f0; }
+        article h3 { color: #0f172a !important; }
+        .badge { background: #e0f2fe !important; color: #0369a1 !important; border: 1px solid #bae6fd; }
+        .cert-card { background: #f8fafc; border: 1px solid #e2e8f0; }
+        .cert-info h4 { color: #0f172a !important; }
+    }
+
+        /* ПАНЕЛЬ УПРАВЛЕНИЯ (КНОПКИ ТЕМЫ И ПЕЧАТИ) */
+    .theme-controls {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        display: flex;
+        gap: 12px;
+        z-index: 1000;
+    }
+    .control-btn {
+        background: #1e293b !important;
+        border: 1px solid #334155 !important;
+        color: #38bdf8 !important;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transition: all 0.2s ease;
+    }
+    .control-btn:hover {
+        background: #38bdf8 !important;
+        color: #0f172a !important;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(56, 189, 248, 0.3);
+    }
+    .control-btn svg {
+        fill: currentColor;
+        width: 20px;
+        height: 20px;
+    }
+
+    /* КЛАСС ДЛЯ СВЕТЛОЙ ТЕМЫ (ВКЛЮЧАЕТСЯ ЧЕРЕЗ JS) */
+    body.light-theme {
+        background-color: #ffffff !important;
+        color: #334155 !important;
+    }
+    body.light-theme h2 {
+        color: #0f172a !important;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    body.light-theme article {
+        border-bottom: 1px dashed #e2e8f0 !important;
+    }
+    body.light-theme article h3 {
+        color: #0f172a !important;
+    }
+    body.light-theme .company-meta strong {
+        color: #0284c7;
+    }
+    body.light-theme ul li {
+        color: #334155;
+    }
+    body.light-theme ul li strong {
+        color: #0f172a;
+    }
+    body.light-theme .badge {
+        background: #e0f2fe !important;
+        color: #0369a1 !important;
+        border: 1px solid #bae6fd;
+    }
+    body.light-theme .badge:hover {
+        background: #0284c7 !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 6px rgba(3, 105, 161, 0.15);
+    }
+    body.light-theme .cert-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+    }
+    body.light-theme .cert-card:hover {
+        border-color: #cbd5e1;
+    }
+    body.light-theme .cert-info h4 {
+        color: #0f172a !important;
+    }
+    body.light-theme .control-btn {
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    body.light-theme .control-btn:hover {
+        background: #0284c7 !important;
+        color: #ffffff !important;
+    }
+
+    /* ИДЕАЛЬНАЯ СТАНДАРТИЗИРОВАННАЯ ПЕЧАТЬ ПОД ФОРМАТ А4 (БЕЗ СДВИГОВ) */
+    @media print {
+        /* Задаем стандартные поля для А4 средствами браузера */
+        @page {
+            size: A4;
+            margin: 15mm 15mm 15mm 15mm;
+        }
+        
+        body {
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            font-size: 9pt !important; 
+            line-height: 1.35 !important; 
+            padding: 0 !important;
+            /* Обнуляем маргины и принудительно центрируем контент */
+            margin: 0 auto !important; 
+            width: 100% !important;
+            max-width: 100% !important;
+            -webkit-print-color-adjust: exact !important; 
+            print-color-adjust: exact !important;
+        }
+
+        /* Безопасная шапка без отрицательных отступов */
+        .hero-header {
+            background: #1e1e2f !important;
+            color: #ffffff !important;
+            padding: 20px 25px !important; 
+            /* Важно: маргины строго 0, чтобы шапка не утягивала контент влево */
+            margin: 0 0 20px 0 !important; 
+            border-radius: 12px !important;
+            width: auto !important;
+        }
+        .hero-header h1 { color: #ffffff !important; font-size: 18pt !important; }
+        .hero-header .role-title { color: #38bdf8 !important; font-size: 11pt !important; }
+        .hero-header .summary-text { color: #94a3b8 !important; font-size: 8.5pt !important; margin: 0 0 15px 0 !important; }
+        .contact-bar { border-top: 1px solid #334155 !important; padding-top: 12px !important; gap: 20px !important; }
+        .contact-bar span { color: #cbd5e1 !important; font-size: 8.5pt !important; }
+        .contact-bar a { color: #38bdf8 !important; text-decoration: none !important; }
+
+        /* Надежная двухколоночная сетка */
+        .resume-container {
+            display: grid !important;
+            grid-template-columns: 2fr 1fr !important;
+            gap: 30px !important; 
+            margin-top: 0 !important;
+            width: 100% !important;
+            /* ДОБАВЛЯЕМ ОТСТУПЫ, ЧТОБЫ ВЫРОВНЯТЬ ТЕКСТ С ШАПКОЙ */
+            padding: 0 25px !important; 
+            box-sizing: border-box !important;
+        }
+
+
+        h2 {
+            color: #0f172a !important;
+            border-bottom: 1px solid #cbd5e1 !important;
+            padding-bottom: 4px !important;
+            margin-bottom: 10px !important;
+            font-size: 9.5pt !important;
+        }
+
+        article {
+            margin-bottom: 10px !important;
+            padding-bottom: 10px !important;
+            border-bottom: 1px dashed #cbd5e1 !important;
+            page-break-inside: avoid !important;
+        }
+
+        article h3 { color: #0f172a !important; font-size: 10.5pt !important; }
+        .company-meta { color: #475569 !important; font-size: 8pt !important; margin: 0 0 6px 0 !important; }
+        .company-meta strong { color: #0f172a !important; }
+
+        ul li { 
+            color: #1e293b !important; 
+            font-size: 8.5pt !important; 
+            margin-bottom: 3px !important; 
+        }
+        ul li strong { color: #0f172a !important; }
+        ul li::before { color: #2563eb !important; }
+
+        /* Компактные бейджи скиллов */
+        .badge {
+            background: #f1f5f9 !important;
+            color: #1e293b !important;
+            border: 1px solid #cbd5e1 !important;
+            padding: 3px 6px !important;
+            font-size: 7.5pt !important;
+            margin: 2px 2px 2px 0 !important;
+            border-radius: 6px !important;
+            display: inline-block !important;
+        }
+
+        .skill-group-wrapper {
+            margin-bottom: 12px !important; 
+        }
+
+        /* Компактные карточки сертификатов */
+        .cert-card {
+            background: #f8fafc !important;
+            border: 1px solid #e2e8f0 !important;
+            padding: 8px 10px !important;
+            border-radius: 8px !important;
+            margin-bottom: 8px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            page-break-inside: avoid !important;
+        }
+        .cert-icon-wrapper {
+            background: #ffffff !important;
+            border: 1px solid #e2e8f0 !important;
+            min-width: 32px !important;
+            height: 32px !important;
+        }
+        .cert-icon-wrapper img {
+            width: 26px !important;
+            height: 26px !important;
+        }
+        .cert-info h4 { color: #0f172a !important; font-size: 8.5pt !important; }
+        .cert-info p { color: #64748b !important; font-size: 7.5pt !important; }
+
+        /* Полностью скрываем элементы управления */
+        .theme-controls { display: none !important; }
+    }
+
+
+
+</style>
+
+
+
+
+
+<body>
+
+    <header class="hero-header">
+        <h1>Regina Sazgutdinova</h1>
+        <p class="role-title">DWH Analyst / Analytics Engineer</p>
+        <p class="summary-text">Специализируюсь на проектировании хранилищ данных (DWH), построении отказоустойчивых ELT/ETL пайплайнов и миграции аналитической инфраструктуры. Умею трансформировать сырые данные бэкенда и веб-логов в стабильные витрины под BI-отчетность.</p>
+        
+        <div class="contact-bar">
+            <!-- Telegram SVG -->
+            <span>
+                <svg style="width:16px; height:16px;" viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 18.2-14.3 22.7-29.7 14.3l-62-45.6-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-5-1.1-7.8-7.7-3.7l-142 89.4-61.2-19.1c-13.3-4.1-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4.1 20.8 3.5 17.2 18.1z"/></svg>
+                TG: <a href="https://t.me/geginja" target="_blank">@geginja</a>
+            </span>
+            <!-- Email SVG -->
+            <span>
+                <svg style="width:16px; height:16px;" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 21.5 64 48 64H464c25.5 0 48-21.5 48-48V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+                Email: <a href="mailto:rsazgutdinova@bk.ru">rsazgutdinova@bk.ru</a>
+            </span>
+            <!-- GitHub SVG -->
+            <span>
+                <svg style="width:16px; height:16px;" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 17.7-27.1 33.7-33.3-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5.7 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-.7zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+                <a href="https://github.com/reginasaz" target="_blank">GitHub</a>
+            </span>
+            <!-- Briefcase SVG -->
+            <span>
+                <svg style="width:16px; height:16px;" viewBox="0 0 512 512"><path d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H48C21.5 96 0 117.5 0 144V416c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V144c0-26.5-21.5-48-48-48H384V56c0-30.9-24.1-56-55.2-56H183.2C152.1 0 128 25.1 128 56zM64 160h96V416H64V160zm128 0H320V416H194V160zm160 0h94V416H354V160z"/></svg>
+                <a href="https://hh.ru/resume/d6dd3ff3ff11461daa0039ed1f34556570306d" target="_blank">hh.ru Profile</a>
+            </span>
+        </div>
+    </header>
+
+    <main style="padding: 0;">
+        <div class="resume-container">
+            
+            <!-- ЛЕВАЯ КОЛОНКА -->
+            <section class="left-column">
+                <h2>EMPLOYMENT HISTORY</h2>
+                
+                <article>
+                    <h3>DWH Analyst / Analytics Engineer</h3>
+                    <p class="company-meta">
+                        <strong>Bask Digital</strong> &middot; Сентябрь 2023 — Октябрь 2026
+                    </p>
+                    <ul>
+                        <li><strong>В роли единственного инженера на проекте перенесла аналитическую инфраструктуру</strong> с BigQuery + Looker Studio на отечественный стек Yandex Cloud (ClickHouse + DataLens + Apache Airflow).</li>
+                        <li><strong>Разрабатывала масштабируемые Python-DAG в Airflow</strong> для автоматизации и оркестрации ELT-процессов обработки сырых логов (бэкенд и Яндекс Метрика) внутри ClickHouse.</li>
+                        <li><strong>Проектировала логическую и физическую структуру таблиц</strong> и многоуровневых витрин данных в ClickHouse под нужды BI-отчетности.</li>
+                        <li><strong>Оптимизировала производительность SQL-запросов</strong>, витрин данных и настроила параметризацию в Yandex DataLens, что позволило масштабировать отчетность на десятки проектов по единому шаблону.</li>
+                        <li><strong>Обнаружила баг в логике антифрода</strong> на этапе анализа данных (пропуск дублей почт со спецсимволами), внедрила SQL-метрики для фильтрации и отсекла ~10% фрод-трафика в DWH.</li>
+                        <li>Обеспечивала Data Quality пайплайнов, контролировала разметку событий и закрывала ad-hoc выгрузки через SQL/Excel.</li>
+                        <li>Провела технический онбординг, составила базу знаний и обучила нового стажера в команде.</li>
+                    </ul>
+                </article>
+
+                <article>
+                    <h3>Marketing Data Analyst (Data Automation)</h3>
+                    <p class="company-meta">
+                        <strong>Simtu</strong> &middot; Октябрь 2022 — Август 2023
+                    </p>
+                    <ul>
+                        <li><strong>Спроектировала и внедрила логику сбора данных</strong> для системы сквозной аналитики на базе связки Roistat + amoCRM, включая глубокую интеграцию коллтрекинга.</li>
+                        <li><strong>Написала скрипты на Python и AppScript</strong> для автоматизации выгрузок данных через REST API в Google Sheets, сократив время сборки регулярных отчетов с 10 часов до 1 часа в неделю.</li>
+                        <li><strong>Отвечала за расчет, верификацию и доставку ключевых метрик</strong> (CTR, CPC, CPO, ARPPU, конверсии воронки) до внутренних заказчиков и конечных потребителей.</li>
+                        <li>Проводила регулярный анализ данных для выявления неэффективных маркетинговых кампаний и оптимизации операционных расходов клиентов.</li>
+                        <li>Управляла кастомной разметкой и настройкой сбора сырых событийных данных в Яндекс Метрике, Google Analytics и GTM.</li>
+                    </ul>
+                </article>
+            </section>
+
+
+            <!-- ПРАВАЯ КОЛОНКА -->
+            <section class="right-column">
+                
+                <div id="skills-section">
+                    <h2>SKILLS</h2>
+                    <div style="margin-top: 15px;">
+                        <div class="skill-group-wrapper">
+                            <h4>DWH & Engineering:</h4>
+                            <span class="badge">ClickHouse</span>
+                            <span class="badge">SQL (DML/DDL)</span>
+                            <span class="badge">Apache Airflow</span>
+                            <span class="badge">Python</span>
+                            <span class="badge">BigQuery</span>
+                            <span class="badge">ETL / ELT</span>
+                            <span class="badge">Data Modeling</span>
+                        </div>
+                        <div class="skill-group-wrapper">
+                            <h4>BI & Cloud Infrastructure:</h4>
+                            <span class="badge">Yandex Cloud</span>
+                            <span class="badge">Yandex DataLens</span>
+                            <span class="badge">Looker Studio</span>
+                            <span class="badge">Analytics Engineering</span>
+                            <span class="badge">Data Quality</span>
+                        </div>
+                        <div class="skill-group-wrapper">
+                            <h4>MarTech & Web Analytics:</h4>
+                            <span class="badge">Сквозная аналитика</span>
+                            <span class="badge">GTM</span>
+                            <span class="badge">Яндекс Метрика</span>
+                            <span class="badge">Google Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- БЛОК СЕРТИФИКАТОВ (ОБНОВЛЕННЫЙ С ХОВЕРОМ) -->
+                <div id="certifications-section" style="margin-top: 30px;">
+                    <h2>CERTIFICATIONS</h2>
+                    <div style="margin-top: 15px;">
+                        
+                        <!-- КАРТОЧКА CLICKHOUSE -->
+                        <a href="https://credly.com" target="_blank" style="text-decoration: none; color: inherit;">
+                            <div class="cert-card">
+                                <div class="cert-icon-wrapper" style="border: none; background: transparent;">
+                                    <img src="images/badge_clickhouse.png" alt="ClickHouse Badge" style="width: 44px; height: 44px; object-fit: contain;">
+                                </div>
+                                <div class="cert-info">
+                                    <h4>ClickHouse Certified Developer</h4>
+                                    <p>ClickHouse &middot; 2026</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- КАРТОЧКА DATALENS (С СЫЛКОЙ НА PDF И ОДИНАКОВЫМ СТИЛЕМ) -->
+                        <a href="datalens_cert.pdf" target="_blank" style="text-decoration: none; color: inherit;">
+                            <div class="cert-card">
+                                <div class="cert-icon-wrapper" style="border: none; background: transparent;">
+                                    <img src="images/badge_datalens.png" alt="DataLens Badge" style="width: 44px; height: 44px; object-fit: contain;">
+                                </div>
+                                <div class="cert-info">
+                                    <h4>DataLens Analyst</h4>
+                                    <p>Yandex Cloud &middot; 2025</p>
+                                </div>
+                            </div>
+                        </a>
+                        
+                    </div>
+                </div>
+                
+            </section>
+        </div>
+    </main>
+
+        <!-- ПЛАВАЮЩИЕ КНОПКИ УПРАВЛЕНИЯ -->
+    <div class="theme-controls">
+        <!-- Кнопка печати -->
+        <button class="control-btn" onclick="window.print()" title="Распечатать / Сохранить в PDF">
+            <svg viewBox="0 0 512 512"><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H448V256H384v64h64v96H128V320H64v128c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-17-6.7-33.3-18.7-45.3l-64-64C417.3 6.7 401 0 384 0H128zM0 224c0-17.7 14.3-32 32-32H352c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32V224zm64 48c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16H80c-8.8 0-16 7.2-16 16z"/></svg>
+        </button>
+        
+        <!-- Кнопка смены темы -->
+        <button class="control-btn" id="theme-toggle" title="Переключить тему (Светлая/Темная)">
+            <svg viewBox="0 0 512 512"><path d="M223.66 473.89V38.11c-100.91 14.65-179.37 101-179.37 205.89v19.86c0 104.92 78.46 191.24 179.37 206.03zM256 0c141.38 0 256 114.62 256 256s-114.62 256-256 256S0 397.38 0 256 114.62 0 256 0z"/></svg>
+        </button>
+    </div>
+
+    <!-- МИНИ-СКРИПТ ДЛЯ ПЕРЕКЛЮЧЕНИЯ -->
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+        });
+    </script>
+
+
+    <footer style="margin-top: 60px; border-top: 1px solid #e2e8f0; padding-bottom: 20px;"></footer>
+
+</body>
+</html>
+
+
+
+
