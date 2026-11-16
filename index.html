@@ -543,7 +543,7 @@
         <h1>Regina Sazgutdinova</h1>
         <p class="role-title">Analytics Engineer / DWH Developer</p>
         <p class="summary-text">
-            Analytics Engineer / DWH Developer с опытом самостоятельного построения DWH и аналитического контура с нуля — миграция, архитектура хранилища и BI-слой в одиночку, без выделенной команды. Специализируюсь на ClickHouse (MergeTree, партиционирование, оптимизация под нагрузку) и Apache Airflow — проектирую идемпотентные ELT-пайплайны и многослойные витрины (Staging/Core/Marts). Закрываю полный цикл от сырых логов до готового дашборда, включая контроль качества данных.
+            Analytics Engineer / DWH Developer с опытом построения DWH и аналитического контура с нуля (миграция стека, архитектура хранилища, витрины данных и BI-слой). Специализируюсь на ClickHouse (MergeTree / ReplacingMergeTree, денормализация, партиционирование) и Apache Airflow — проектирую идемпотентные ELT-пайплайны и оптимизированные витрины данных. Закрываю полный цикл от сырых логов до готового дашборда, включая контроль качества данных.
         </p>
         
         <div class="contact-bar">
@@ -583,12 +583,12 @@
                         <strong><a href="https://bask.ws" target="_blank">Bask Digital</a></strong> &middot; Сентябрь 2023 — По настоящее время
                     </p>
                     <ul>
-                        <li><strong>В роли единственного DWH-специалиста реализовала миграцию хранилища (~30 ГБ данных) и BI-слоя</strong> с BigQuery + Looker Studio на ClickHouse + Apache Airflow + DataLens за 6 недель: перенесла логику трансформации данных, спроектировала витрины и восстановила всю отчетность.</li>
+                        <li><strong>Спроектировала и реализовала с нуля полную миграцию аналитического хранилища и BI-слоя</strong> с BigQuery + Looker Studio на ClickHouse + Apache Airflow + DataLens за 6 недель: перенесла логику трансформации данных, спроектировала витрины и восстановила всю отчетность.</li>
                         <li><strong>Разрабатывала в Airflow масштабируемые идемпотентные DAG'и</strong> для пакетной обработки данных: ежедневный скользящий расчет последних 7 дней с защитой от дублирования и батч-подгрузка истории по 30 дней.</li>
-                        <li><strong>Проектировала структуры таблиц и многоуровневых витрин данных в ClickHouse</strong> (движки MergeTree, слои Staging, Core, Marts), оптимизированных под аналитическую BI-отчетность.</li>
+                        <li><strong>Проектировала структуры таблиц и денормализованных витрин данных в ClickHouse</strong> (движки MergeTree / ReplacingMergeTree, оптимизация ORDER BY и партиционирования под тяжелые BI-агрегации).</li>
                         <li><strong>Настроила шаблонизацию дашбордов через QL-чарты в DataLens</strong> с управляемыми параметрами, воспроизведя 20 клиентских отчетов по единому конфигурационному шаблону.</li>
                         <li><strong>Провела аудит и устранила баг в логике антифрода:</strong> выявила скрытые паттерны (кластеры IP, вариации email) и добавила SQL-фильтрацию в витринах — отсекла ~10% фрод-трафика в DWH.</li>
-                        <li><strong>Занималась валидацией данных (Data Quality) и дебаггингом пайплайнов:</strong> настроила автоматические SQL-проверки целостности данных с отправкой алертов о сбоях и аномалиях в Telegram (TelegramOperator / Python).</li>
+                        <li><strong>Занималась валидацией данных (Data Quality) и дебаггингом пайплайнов:</strong> настроила автоматические SQL-проверки целостности данных с отправкой алертов о сбоях и аномалиях в Telegram.</li>
                     </ul>
                 </article>
 
@@ -612,7 +612,7 @@
                             <a href="https://github.com/reginasaz/clickhouse-anonymizer" target="_blank" class="project-link">GitHub ↗</a>
                         </div>
                         <p>
-                            AST-based инструмент маскирования чувствительных данных в ClickHouse SQL перед передачей в LLM: сохраняет синтаксическую структуру, семантически классифицирует поля (id/dt/metric) и поддерживает сквозную пакетную обработку слоев Staging/Marts.
+                            AST-based инструмент маскирования чувствительных данных в ClickHouse SQL перед передачей в LLM: сохраняет синтаксическую структуру, семантически классифицирует поля (id/dt/metric) и поддерживает сквозную пакетную обработку связанных DWH-скриптов.
                         </p>
                         <div class="project-badges">
                             <span class="badge">Python</span>
@@ -663,7 +663,7 @@
                         <div class="skill-group-wrapper">
                             <h4>DWH & Инженерия данных</h4>
                             <span class="badge">ClickHouse</span>
-                            <span class="badge">SQL (DML/DDL)</span>
+                            <span class="badge">SQL</span>
                             <span class="badge">Apache Airflow</span>
                             <span class="badge">Python</span>
                             <span class="badge">dbt</span>
