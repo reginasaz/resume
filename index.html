@@ -53,8 +53,6 @@
         font-style: normal;
     }
 
-
-
         body {
             background-color: #0f172a;
             color: #94a3b8;
@@ -68,7 +66,6 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-
 
         /* ТЕМНАЯ ШАПКА */
         .hero-header {
@@ -131,7 +128,6 @@
             text-decoration: underline;
         }
 
-
         /* СЕТКА ДЛЯ ПК */
         .resume-container {
             display: grid;
@@ -185,7 +181,6 @@
             color: #ffffff;
             text-decoration: underline;
         }
-
 
         ul {
             padding-left: 0;
@@ -290,7 +285,56 @@
             font-weight: 500;
         }
 
-
+        /* КАРТОЧКА ПЕТ-ПРОЕКТА */
+        .project-card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 20px 22px;
+            transition: all 0.2s ease;
+        }
+        .project-card:hover {
+            border-color: #475569;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .project-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .project-card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            font-size: 1.15rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+        .project-card .project-link {
+            color: #38bdf8;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s ease;
+        }
+        .project-card .project-link:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        .project-card p {
+            margin: 0 0 14px 0;
+            font-size: 0.92rem;
+            color: #94a3b8;
+            line-height: 1.55;
+        }
+        .project-badges .badge {
+            font-size: 0.72rem;
+            padding: 3px 9px;
+            margin: 2px 4px 2px 0;
+        }
 
         /* ПАНЕЛЬ УПРАВЛЕНИЯ (КНОПКИ ТЕМЫ И ПЕЧАТИ) */
         .theme-controls {
@@ -344,17 +388,21 @@
         }
         body.light-theme article h3,
         body.light-theme ul li strong,
-        body.light-theme .cert-info h4 {
+        body.light-theme .cert-info h4,
+        body.light-theme .project-card h3 {
             color: #0f172a;
         }
         body.light-theme .company-meta strong,
-        body.light-theme .company-meta a {
+        body.light-theme .company-meta a,
+        body.light-theme .project-card .project-link {
             color: #0284c7;
         }
-        body.light-theme .company-meta a:hover {
+        body.light-theme .company-meta a:hover,
+        body.light-theme .project-card .project-link:hover {
             color: #0f172a;
         }
-        body.light-theme ul li {
+        body.light-theme ul li,
+        body.light-theme .project-card p {
             color: #334155;
         }
         body.light-theme .badge {
@@ -367,11 +415,13 @@
             color: #ffffff;
             box-shadow: 0 4px 6px rgba(3, 105, 161, 0.15);
         }
-        body.light-theme .cert-card {
+        body.light-theme .cert-card,
+        body.light-theme .project-card {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
         }
-        body.light-theme .cert-card:hover {
+        body.light-theme .cert-card:hover,
+        body.light-theme .project-card:hover {
             border-color: #cbd5e1;
         }
         body.light-theme .control-btn {
@@ -384,8 +434,6 @@
             background: #0284c7;
             color: #ffffff;
         }
-
-
 
         /* ИДЕАЛЬНАЯ ПЕЧАТЬ ПОД А4 */
         @media print {
@@ -462,19 +510,16 @@
                 display: inline-block !important;
             }
             .skill-group-wrapper { margin-bottom: 12px !important; }
-            .cert-card {
+            .cert-card, .project-card {
                 background: #f8fafc !important;
                 border: 1px solid #e2e8f0 !important;
                 padding: 8px 10px !important;
                 border-radius: 8px !important;
                 margin-bottom: 8px !important;
-                display: flex !important;
-                align-items: center !important;
-                gap: 10px !important;
                 page-break-inside: avoid !important;
             }
-            .cert-info h4 { color: #0f172a !important; font-size: 8.5pt !important; }
-            .cert-info p { color: #64748b !important; font-size: 7.5pt !important; }
+            .cert-info h4, .project-card h3 { color: #0f172a !important; font-size: 8.5pt !important; }
+            .cert-info p, .project-card p { color: #64748b !important; font-size: 7.5pt !important; margin-bottom: 4px !important; }
 
             .theme-controls, footer { display: none !important; }
         }
@@ -492,19 +537,20 @@
     </style>
 </head>
 
-
-
 <body>
 
     <header class="hero-header">
         <h1>Regina Sazgutdinova</h1>
-        <p class="role-title">DWH Analyst / Analytics Engineer</p>
+        <p class="role-title">Analytics Engineer / DWH Developer</p>
         <p class="summary-text">
-            Сертифицированный вендорами Clickhouse Developer и Datalens Analyst.<br />
-            Специализируюсь на проектировании хранилищ данных (DWH), построении отказоустойчивых ELT/ETL пайплайнов и миграции аналитической инфраструктуры. Умею трансформировать сырые данные бэкенда и веб-логов в стабильные витрины под BI-отчетность.
+            Analytics Engineer / DWH Developer с опытом самостоятельного построения DWH и аналитического контура с нуля — миграция, архитектура хранилища и BI-слой в одиночку, без выделенной команды. Специализируюсь на ClickHouse (MergeTree, партиционирование, оптимизация под нагрузку) и Apache Airflow — проектирую идемпотентные ELT-пайплайны и многослойные витрины (Staging/Core/Marts). Закрываю полный цикл от сырых логов до готового дашборда, включая контроль качества данных.
         </p>
         
         <div class="contact-bar">
+            <span>
+                <svg style="width:16px; height:16px;" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+                Уфа &middot; Удаленка
+            </span>
             <span>
                 <svg style="width:16px; height:16px;" viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm121.8 169.9l-40.7 191.8c-3 18.2-14.3 22.7-29.7 14.3l-62-45.6-29.9 28.8c-3.3 3.3-6.1 6.1-12.5 6.1l4.4-63.1 114.9-103.8c5-5-1.1-7.8-7.7-3.7l-142 89.4-61.2-19.1c-13.3-4.1-13.6-13.3 2.8-19.7l239.1-92.2c11.1-4.1 20.8 3.5 17.2 18.1z"/></svg>
                 TG: <a href="https://t.me/geginja" target="_blank">@geginja</a>
@@ -527,83 +573,61 @@
     <main style="padding: 0;">
         <div class="resume-container">
 
-
-
             <!-- ЛЕВАЯ КОЛОНКА -->
             <section class="left-column">
-                <h2>EMPLOYMENT HISTORY</h2>
+                <h2>ОПЫТ РАБОТЫ</h2>
                 
                 <article>
-                    <h3>DWH Analyst / Analytics Engineer</h3>
+                    <h3>Analytics Engineer / DWH Developer</h3>
                     <p class="company-meta">
-                        <strong><a href="https://bask.ws" target="_blank">Bask Digital</a></strong> &middot; Сентябрь 2023 — Октябрь 2026
+                        <strong><a href="https://bask.ws" target="_blank">Bask Digital</a></strong> &middot; Сентябрь 2023 — По настоящее время
                     </p>
                     <ul>
-                        <li><strong>В роли единственного инженера на проекте перенесла аналитическую инфраструктуру</strong> с BigQuery + Looker Studio на Yandex Cloud (ClickHouse + DataLens + Apache Airflow).</li>
-                        <li><strong>Разрабатывала в Airflow масштабируемые сценарии (DAG)</strong> для автоматизации пакетной обработки данных: скрипты запускали расчеты сырых логов бэкенда и Яндекс Метрики внутри ClickHouse и собирали готовые витрины.</li>
-                        <li><strong>Проектировала структуры плоских денормализованных таблиц</strong> (движки семейства MergeTree) и многоуровневых витрин данных в ClickHouse (слои Staging, Core, Marts), оптимизированных под нужды BI-отчетности.</li>
-                        <li><strong>Оптимизировала нагрузку на память ClickHouse</strong> при расчете истории (партиционирование, батчинг по 30 дней) и настроила шаблонизацию через QL-чарты в DataLens, что позволило развернуть десятки дашбордов по единому конфигурационному файлу.</li>
-                        <li><strong>Нашла баг в логике антифрода</strong> на этапе анализа данных (пропуск дублей почт со спецсимволами), настроила SQL-фильтрацию в витринах для защиты от дубликатов и отсекла ~10% фрод-трафика в DWH.</li>
-                        <li><strong>Занималась дебаггингом пайплайнов</strong>, контролем качества данных (Data Quality), проверкой разметки событий и закрывала сложные ad-hoc выгрузки через SQL.</li>
-                        <li><strong>Провела технический онбординг</strong> и обучение нового стажера в команде.</li>
+                        <li><strong>В роли единственного DWH-специалиста реализовала миграцию хранилища (~30 ГБ данных) и BI-слоя</strong> с BigQuery + Looker Studio на ClickHouse + Apache Airflow + DataLens за 6 недель: перенесла логику трансформации данных, спроектировала витрины и восстановила всю отчетность.</li>
+                        <li><strong>Разрабатывала в Airflow масштабируемые идемпотентные DAG'и</strong> для пакетной обработки данных: ежедневный скользящий расчет последних 7 дней с защитой от дублирования и батч-подгрузка истории по 30 дней.</li>
+                        <li><strong>Проектировала структуры таблиц и многоуровневых витрин данных в ClickHouse</strong> (движки MergeTree, слои Staging, Core, Marts), оптимизированных под аналитическую BI-отчетность.</li>
+                        <li><strong>Настроила шаблонизацию дашбордов через QL-чарты в DataLens</strong> с управляемыми параметрами, воспроизведя 20 клиентских отчетов по единому конфигурационному шаблону.</li>
+                        <li><strong>Провела аудит и устранила баг в логике антифрода:</strong> выявила скрытые паттерны (кластеры IP, вариации email) и добавила SQL-фильтрацию в витринах — отсекла ~10% фрод-трафика в DWH.</li>
+                        <li><strong>Занималась валидацией данных (Data Quality) и дебаггингом пайплайнов:</strong> настроила автоматические SQL-проверки целостности данных с отправкой алертов о сбоях и аномалиях в Telegram (TelegramOperator / Python).</li>
                     </ul>
                 </article>
 
-
                 <article>
-                    <h3>Marketing Data Analyst (Data Automation)</h3>
+                    <h3>Marketing Data Analyst (Process Automation)</h3>
                     <p class="company-meta">
                         <strong><a href="https://simtu.ru" target="_blank">Simtu</a></strong> &middot; Октябрь 2022 — Август 2023
                     </p>
                     <ul>
-                        <li><strong>Спроектировала и внедрила логику сбора данных</strong> для системы сквозной аналитики на базе связки Roistat + amoCRM, включая глубокую интеграцию коллтрекинга.</li>
-                        <li><strong>Написала скрипты на Python и AppScript</strong> для автоматизации выгрузок данных через REST API в Google Sheets, сократив время сборки регулярных отчетов с 10 часов до 1 часа в неделю.</li>
-                        <li><strong>Отвечала за расчет, верификацию и доставку ключевых метрик</strong> (CTR, CPC, CPO, ARPPU, конверсии воронки) до внутренних заказчиков и конечных потребителей.</li>
-                        <li><strong>Проводила регулярный анализ данных</strong> для выявления неэффективных маркетинговых кампаний и оптимизации операционных расходов клиентов.</li>
-                        <li><strong>Управляла кастомной разметкой</strong> и настройкой сбора сырых событийных данных в Яндекс Метрике, Google Analytics и GTM.</li>
+                        <li><strong>Спроектировала логику сбора и синхронизации данных</strong> для сквозной аналитики на базе Roistat + amoCRM, включая глубокую интеграцию коллтрекинга.</li>
+                        <li><strong>Написала скрипты на Python и REST API</strong> для автоматизации выгрузок данных — сократила время сборки регулярных отчетов с 10 до 1 часа в неделю.</li>
+                        <li><strong>Управляла разметкой и настройкой сбора сырых событийных данных</strong> в веб-аналитике (Яндекс Метрика, Google Analytics, GTM).</li>
                     </ul>
                 </article>
-                </section>
 
-
-
-
-
-            <!-- ПРАВАЯ КОЛОНКА -->
-            <section class="right-column">
-                <div id="skills-section">
-                    <h2>SKILLS</h2>
-                    <div style="margin-top: 15px;">
-                        <div class="skill-group-wrapper">
-                            <h4>DWH & Engineering:</h4>
-                            <span class="badge">ClickHouse</span>
-                            <span class="badge">SQL (DML/DDL)</span>
-                            <span class="badge">Apache Airflow</span>
+                <div id="projects-section" style="margin-top: 35px;">
+                    <h2>ПЕТ-ПРОЕКТЫ</h2>
+                    <div class="project-card">
+                        <div class="project-card-header">
+                            <h3>SQL Anonymizer for LLMs (ClickHouse)</h3>
+                            <a href="https://github.com/reginasaz/clickhouse-anonymizer" target="_blank" class="project-link">GitHub ↗</a>
+                        </div>
+                        <p>
+                            AST-based инструмент маскирования чувствительных данных в SQL-запросах перед передачей в LLM: сохраняет синтаксическую структуру, отделяет служебные литералы и поддерживает dbt/Jinja-шаблоны.
+                        </p>
+                        <div class="project-badges">
                             <span class="badge">Python</span>
-                            <span class="badge">BigQuery</span>
-                            <span class="badge">ETL / ELT</span>
-                            <span class="badge">Data Modeling</span>
-                        </div>
-                        <div class="skill-group-wrapper">
-                            <h4>BI & Cloud Infrastructure:</h4>
-                            <span class="badge">Yandex Cloud</span>
-                            <span class="badge">Yandex DataLens</span>
-                            <span class="badge">Looker Studio</span>
-                            <span class="badge">Analytics Engineering</span>
-                            <span class="badge">Data Quality</span>
-                        </div>
-                        <div class="skill-group-wrapper">
-                            <h4>MarTech & Web Analytics:</h4>
-                            <span class="badge">Сквозная аналитика</span>
-                            <span class="badge">GTM</span>
-                            <span class="badge">Яндекс Метрика</span>
-                            <span class="badge">Google Analytics</span>
+                            <span class="badge">AST Parser</span>
+                            <span class="badge">ClickHouse SQL</span>
+                            <span class="badge">dbt / Jinja</span>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <div id="certifications-section" style="margin-top: 30px;">
-                    <h2>CERTIFICATIONS</h2>
+            <!-- ПРАВАЯ КОЛОНКА -->
+            <section class="right-column">
+                <div id="certifications-section">
+                    <h2>СЕРТИФИКАТЫ</h2>
                     <div style="margin-top: 15px;">
                         
                         <a href="https://www.credly.com/users/regina-sazgutdinova/badges/credly" target="_blank" style="text-decoration: none; color: inherit;">
@@ -629,15 +653,46 @@
                                 </div>
                             </div>
                         </a>
-
                         
+                    </div>
+                </div>
+
+                <div id="skills-section" style="margin-top: 30px;">
+                    <h2>НАВЫКИ</h2>
+                    <div style="margin-top: 15px;">
+                        <div class="skill-group-wrapper">
+                            <h4>DWH & Инженерия данных</h4>
+                            <span class="badge">ClickHouse</span>
+                            <span class="badge">SQL (DML/DDL)</span>
+                            <span class="badge">Apache Airflow</span>
+                            <span class="badge">Python</span>
+                            <span class="badge">dbt</span>
+                            <span class="badge">ELT / ETL</span>
+                            <span class="badge">Data Modeling</span>
+                            <span class="badge">Data Quality</span>
+                        </div>
+                        <div class="skill-group-wrapper">
+                            <h4>BI & Инфраструктура</h4>
+                            <span class="badge">Yandex Cloud</span>
+                            <span class="badge">Yandex DataLens</span>
+                            <span class="badge">Looker Studio</span>
+                            <span class="badge">BigQuery</span>
+                            <span class="badge">Docker</span>
+                            <span class="badge">Git</span>
+                        </div>
+                        <div class="skill-group-wrapper">
+                            <h4>Интеграции & MarTech</h4>
+                            <span class="badge">REST API</span>
+                            <span class="badge">Сквозная аналитика</span>
+                            <span class="badge">Яндекс Метрика</span>
+                            <span class="badge">Google Analytics</span>
+                            <span class="badge">GTM</span>
+                        </div>
                     </div>
                 </div>
             </section>
         </div>
     </main>
-
-
 
     <!-- ПЛАВАЮЩИЕ КНОПКИ УПРАВЛЕНИЯ -->
     <div class="theme-controls">
@@ -652,8 +707,10 @@
     <!-- МИНИ-СКРИПТ ДЛЯ ПЕРЕКЛЮЧЕНИЯ ТЕМЫ -->
     <script>
         const toggleBtn = document.getElementById('theme-toggle');
+        const savedTheme = localStorage.getItem('resume-theme');
+        const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
         
-        if (localStorage.getItem('resume-theme') === 'light') {
+        if (savedTheme === 'light' || (!savedTheme && prefersLight)) {
             document.body.classList.add('light-theme');
         }
 
@@ -668,7 +725,7 @@
     </script>
 
     <footer style="margin-top: 60px; border-top: 1px solid #334155; padding: 20px 0; text-align: center; font-size: 0.8rem; color: #64748b;">
-        &copy; 2026 Regina Sazgutdinova &middot; DWH Analyst / Analytics Engineer
+        &copy; 2026 Regina Sazgutdinova &middot; Analytics Engineer / DWH Developer
     </footer>
 
 </body>

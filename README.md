@@ -1,4 +1,4 @@
-# Веб-резюме (DWH / Analytics Engineer)
+# Веб-резюме (Analytics Engineer / DWH Developer)
 
 Статическая версия интерактивного резюме. Развернуто на платформе GitHub Pages.
 
